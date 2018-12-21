@@ -1,20 +1,29 @@
 package com.train
 
-import java.util.*
 
 fun main(args: Array<String>) {
 
-    val scanner = Scanner(System.`in`)
-    println("Please enter number of tickets: ")
-    var tickets = scanner.nextInt()
-    println("How many round-trip tickets: ")
-    var roundTripCount = scanner.nextInt()
+    var tickets = 0
+    var roundTripCount = 0
 
-    if (tickets > 0 && roundTripCount >= 0 && tickets >= roundTripCount) {
-        val ticket = TicketKotlin(tickets, roundTripCount)
-        ticket.printTotalMoney()
-    } else {
-        println("Please check the tickets number & round-trip count again.")
+    while (tickets != -1) {
+
+        println("Please enter number of tickets or enter -1 to exit.")
+        tickets = readLine()!!.toInt()
+
+        if (tickets > 0){
+            println("How many round-trip tickets: ")
+            roundTripCount = readLine()!!.toInt()
+
+            if (roundTripCount >= 0 && tickets >= roundTripCount) {
+                val ticket = TicketKotlin(tickets, roundTripCount)
+                ticket.printTotalMoney()
+            } else {
+                println("Please check the tickets number & round-trip count again.")
+            }
+        } else {
+            println("Goodbye!")
+        }
     }
 
 }
